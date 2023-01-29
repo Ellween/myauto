@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { MY_AUTO_MANS_JSON, MY_AUTO_URL } from '../constants/myAutoURL';
 
 export interface FetchCarsQuery {
   ForRent?: number;
@@ -33,10 +34,7 @@ export const fetchCars = async (query: FetchCarsQuery) => {
   };
 
   try {
-    const response = await axios.get(
-      'https://api2.myauto.ge/ka/products',
-      config
-    );
+    const response = await axios.get(`${MY_AUTO_URL}/products`, config);
 
     return response.data?.data;
   } catch (error) {
@@ -54,10 +52,7 @@ export const fetchModels = async (query: FetchModelsQuery) => {
   };
 
   try {
-    const response = await axios.get(
-      'https://api2.myauto.ge/ka/getManModels',
-      config
-    );
+    const response = await axios.get(`${MY_AUTO_URL}/getManModels`, config);
 
     return response?.data?.data;
   } catch (error) {
@@ -74,10 +69,7 @@ export const fetchManId = async () => {
   };
 
   try {
-    const response = await axios.get(
-      'https://static.my.ge/myauto/js/mans.json',
-      config
-    );
+    const response = await axios.get(MY_AUTO_MANS_JSON, config);
 
     return response?.data;
   } catch (error) {
@@ -94,10 +86,7 @@ export const fetchCats = async () => {
   };
 
   try {
-    const response = await axios.get(
-      'https://api2.myauto.ge/ka/cats/get',
-      config
-    );
+    const response = await axios.get(`${MY_AUTO_URL}/cats/get`, config);
 
     return response?.data?.data;
   } catch (error) {

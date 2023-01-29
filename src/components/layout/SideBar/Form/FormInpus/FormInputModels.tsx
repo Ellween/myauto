@@ -62,6 +62,12 @@ const FormInputModels: React.FC<Props> = ({
       }
     }
 
+    const hasValue = newFilter[man_id].value.some((val) => val);
+
+    if (hasValue) {
+      setSearchBtn(true);
+    }
+
     selectedInputs(newFilter);
     setFilter(newFilter);
   };
